@@ -161,7 +161,6 @@ struct
   module String =
   struct
     include String
-    exception Invalid_string
       
     let find str sub =
       let sublen = length sub in
@@ -178,7 +177,7 @@ struct
 		    if !j = sublen then begin found := i; raise Exit; end;
 		  done;
 	      done;
-	      raise Invalid_string
+	      raise Not_found
 	    with
 		Exit -> !found
 		  
@@ -196,7 +195,7 @@ struct
 	    let s1 , s2 = split str sep in
 	      s1 :: nsplit s2 sep
 	  with
-	      Invalid_string -> [str]
+	      Not_found -> [str]
 	in
 	  nsplit str sep
       )
@@ -396,12 +395,12 @@ struct
       fun (name, src) ->
 (*	Printf.eprintf "Extracting module %S name from %S\n" name src;
 	if try String.find name "Inner" <> 0 (*Don't extract from files whose name starts with Inner*)
-	   with String.Invalid_string -> true
+	   with Not_found -> true
 	then*)
 	  let name = try
 	    let index = String.find name ".inferred" in
 	      String.sub name 0 index
-	  with String.Invalid_string -> name in
+	  with Not_found -> name in
 	  let (prefix, contents) = with_input_file src parse_header in
 	    Printf.bprintf buf "%s\nmodule %s:(*from %S*)\nsig\n%s\nend\n" prefix name src contents
     ) l

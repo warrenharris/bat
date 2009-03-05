@@ -47,7 +47,7 @@ module GetOpt =
       try 
         let (h, x) = String.split haystack needle in h, [x] 
       with
-        Invalid_string -> haystack, []
+        Not_found -> haystack, []
 
     let find_opt format_name options s =
       let rec loop l =

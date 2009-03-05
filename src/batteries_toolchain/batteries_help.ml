@@ -132,7 +132,7 @@ let browse pages =
    [local_name "a.b.c.d"] produces ["d"]*)
 let local_name s =
   try snd (String.rsplit s ".")
-  with String.Invalid_string -> s
+  with Not_found -> s
 
 (**
    Load the contents of an index file into hash tables.
@@ -144,7 +144,7 @@ let load_index ~name ~index ~prefix ~suggestions ~completions =
 	 Scanf.sscanf line " %S : %S " 
 	   (fun item url ->
 	      let full_url = try ignore (String.find url "://"); url
-	      with Invalid_string -> prefix^url
+	      with Not_found -> prefix^url
 	      in
 		Hashtbl.add suggestions item {spackage = name; url = full_url}; (*Add fully qualified name -> url*)
 		let basename = Filename.basename item in

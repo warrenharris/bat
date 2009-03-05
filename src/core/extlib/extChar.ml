@@ -79,6 +79,7 @@ let is_latin1 c = is_uppercase_latin1 c || is_lowercase_latin1 c
       | Some s -> s in
       from -- last
 
+  let icompare c1 c2 = code (lowercase c1) - code (lowercase c2)
 
   let t_of_sexp = Conv.char_of_sexp
   let sexp_of_t = Conv.sexp_of_char

@@ -294,6 +294,7 @@ module  UTF8    = Extlib.ExtUTF8.UTF8
 module  Rope    = Extlib.Rope
 module  UChar   = Extlib.ExtUChar.UChar
 module  String  = Extlib.ExtString.String
+module  Substring  = Extlib.Substring
 (*module  StringText (A module containing aliases to String and modified
         Char)*)
 (*module  RopeText (As StringText but with implementations from Rope and

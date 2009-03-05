@@ -36,7 +36,6 @@ end
 module String =
 struct
   include String
-  exception Invalid_string
 
   let find str sub =
     let sublen = length sub in
@@ -53,7 +52,7 @@ struct
 		  if !j = sublen then begin found := i; raise Exit; end;
 		done;
 	    done;
-	    raise Invalid_string
+	    raise Not_found
 	  with
 	      Exit -> !found
 
@@ -71,7 +70,7 @@ struct
 	  let s1 , s2 = split str sep in
 	    s1 :: nsplit s2 sep
 	with
-	    Invalid_string -> [str]
+	    Not_found -> [str]
       in
 	nsplit str sep
     )

@@ -115,6 +115,9 @@ val compare: t -> t -> int
     allows the module [Char] to be passed as argument to the functors
     {!Set.Make} and {!Map.Make}. *)
 
+val icompare: t -> t -> int
+(** [icompare c1 c2] compares two characters ignoring case. *)
+
 val enum: unit -> char Enum.t
 (** Produce the enumeration of all characters *)
 
