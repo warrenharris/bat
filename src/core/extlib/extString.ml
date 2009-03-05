@@ -933,12 +933,6 @@ external length : _ t  -> int = "%string_length"
 external get : [> `Read] t -> int -> char = "%string_safe_get"
 external set : [> `Write] t -> int -> char -> unit = "%string_safe_set"
 external create : int -> _ t = "caml_create_string"
-external unsafe_get : [> `Read] t -> int -> char = "%string_unsafe_get"
-external unsafe_set : [> `Write] -> int -> char -> unit = "%string_unsafe_set"
-external unsafe_blit :
-  [> `Read] t -> int -> [> `Write] -> int -> int -> unit = "caml_blit_string" "noalloc"
-external unsafe_fill :
-  [> `Write] -> int -> int -> char -> unit = "caml_fill_string" "noalloc"
 
 end
 end
