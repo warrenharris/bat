@@ -25,15 +25,19 @@
  *
  *)
 
+open Sexplib
+open Conv
+TYPE_CONV_PATH "" (*For Sexplib, Bin-prot...*)
+
+(*Minor optimization.*)
+let int_min (x:int) (y:int) = if x < y then x else y
+let int_max (x:int) (y:int) = if x < y then y else x
+
 open ExtString
 open ExtChar
 
 type t = string * int * int (* string, offset, length *)
 type substring = t
-
-(*Minor optimization.*)
-let int_min (x:int) (y:int) = if x < y then x else y
-let int_max (x:int) (y:int) = if x < y then y else x
 
 (* testing *)
 let (@=) actual expect =
