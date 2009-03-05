@@ -1152,7 +1152,7 @@ val reduce : ('a -> 'a -> 'a) -> 'a Enum.t -> 'a
       one element, otherwise [f (... (f (f a1) a2) ...) aN] where
       a1..N are the elements of [e]. 
 
-      @raises Not_found if [e] is empty.
+      @raise Not_found if [e] is empty.
 
       For instance, if [add] is the function [fun x y -> x + y],
       [reduce add] is the function which computes the sum of the

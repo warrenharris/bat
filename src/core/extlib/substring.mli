@@ -72,7 +72,7 @@ val substring : string -> int -> int -> t
 
       [substring(s, i, n)] creates the substring (s, i, n), consisting
       of the substring of s with length n starting at i.
-      @raises Invalid_argument if i<0 or n<0 or i+n > size s. *)
+      @raise Invalid_argument if i<0 or n<0 or i+n > size s. *)
 
 val empty : unit -> t
   (** [empty ()] returns an empty substring. *)
@@ -657,7 +657,8 @@ val getc : t -> (char * t) option
   (** [getc sus] returns SOME(c, rst) where c is the first character and
       rst the remainder of sus, if sus is non-empty; otherwise returns
       NONE.
-      @deprecated *)
+      @deprecated use XXX
+  *)
 
 val first : t -> char option
   (** [first sus] returns SOME c where c is the first character in
